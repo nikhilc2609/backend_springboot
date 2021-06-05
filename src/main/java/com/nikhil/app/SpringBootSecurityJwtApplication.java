@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+"com.nikhil.app.security.services.UserDetailsServiceImpl", "com.nikhil.app.repository.UserRepository"})
 public class SpringBootSecurityJwtApplication {
 
 	public static void main(String[] args) {
