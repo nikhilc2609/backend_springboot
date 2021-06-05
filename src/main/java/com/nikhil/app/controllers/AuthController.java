@@ -98,18 +98,9 @@ public class AuthController {
 				.orElseThrow(() -> new UsernameNotFoundException("User id Not Found with id: " + userf.getId()));
 		user.setTicket(userf.getTicket());
 		user.setScore(userf.getScore());
-		userRepository.save(user);
-//		ScoreAndTicket scoreAndTicket = new ScoreAndTicket(userf.getTicket(),userf.getScore());
-		user.setPassword("");
-		return ResponseEntity.ok(user);
-	}
-	
-	@PutMapping("/update/time")
-	public ResponseEntity<?> updateTime(@RequestBody User userf){
-		User user=userRepository.findById(userf.getId())
-				.orElseThrow(() -> new UsernameNotFoundException("User id Not Found with id: " + userf.getId()));
 		user.setTime(userf.getTime());
 		userRepository.save(user);
+//		ScoreAndTicket scoreAndTicket = new ScoreAndTicket(userf.getTicket(),userf.getScore());
 		user.setPassword("");
 		return ResponseEntity.ok(user);
 	}
