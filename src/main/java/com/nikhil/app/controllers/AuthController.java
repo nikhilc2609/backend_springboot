@@ -29,7 +29,6 @@ import com.nikhil.app.payload.response.JwtResponse;
 import com.nikhil.app.payload.response.MessageResponse;
 import com.nikhil.app.repository.UserRepository;
 import com.nikhil.app.security.jwt.JwtUtils;
-import com.nikhil.app.security.services.SequenceGeneratorService;
 import com.nikhil.app.security.services.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -85,8 +84,6 @@ public class AuthController {
 		User user = new User(signUpRequest.getUsername(), 
 							 signUpRequest.getEmail(),
 							 encoder.encode(signUpRequest.getPassword()),time);
-		user.setId(SequenceGeneratorService.generateSequence(User.SEQUENCE_NAME));
-
 		userRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

@@ -5,15 +5,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 @Entity
-@Document(	collection = "users")
-public class User {
-	@Transient
-    public static final String SEQUENCE_NAME = "users_sequence";
-	
+@Table(	name = "users")
+public class User {	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotBlank
